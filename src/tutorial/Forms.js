@@ -20,12 +20,12 @@ function Forms() {
             <form className="form" onSubmit={handleSubmit}>
             <div className="form-control">
                 <label htmlFor="firstName">Name :</label>
-                <input type="text" id="firstName" name="firstName"></input>
+                <input type="text" id="firstName" name="firstName" value={firstName} onChange={(e)=> setFirstName(e.target.value)}></input>
 
             </div>
             <div className="form-control">
                 <label htmlFor="email">Email :</label>
-                <input type="text" id="email" name="email"></input>
+                <input type="text" id="email" name="email" value={email} onChange={(e)=> setEmail(e.target.value)}></input>
 
             </div>
             <button type="submit" >SUBMIT</button>    {/* onClick does the same job*/ }
