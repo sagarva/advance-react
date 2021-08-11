@@ -4,8 +4,13 @@ function UseStateCounter() {
     const [value, setValue] = useState(0);
     const complexIncrease = () =>{
         setTimeout(()=>{
-            setValue(value+1);
-        }, 2000)
+            setValue((prevState) =>{
+                return prevState +1;  //passing a function through setValue of use state
+            }
+                )
+
+            //setValue(value+500); //passing hard value through the set value of use state
+        }, 5000)
     }
     return (
         <>
