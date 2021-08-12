@@ -3,12 +3,20 @@ import Modal from './model';
 import {data} from "../data"
 
 function Index() {
-    const [name, setName] = useState("")
-    const [people, setPeople] = useState(data)
-    const [showModal, setShowModel] = useState(false);
+    const [name, setName] = useState("")   //use state to take name input  
+    const [people, setPeople] = useState(data)   //we have created a program where we are taking values from user and displayed the same
+    const [showModal, setShowModal] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(name){
+            setShowModal(true);
+            setPeople([...people,{id:new Date().getTime().toString(), name}]);
+            setName('')
+        }
+        else{
+            setShowModal(true)
+        }
     }
 
     return (
@@ -21,6 +29,13 @@ function Index() {
             </div>
             <button type='submit'>Add Users</button>
         </form>
+        {people.map((person) =>{
+            return<>
+                <div key={person.id}>
+                    <h4>{person.name}</h4>
+                </div>
+            </>
+        })}
         </>
     )
 }
