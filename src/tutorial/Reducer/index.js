@@ -1,27 +1,43 @@
 import React,{useState, useReducer} from 'react';
-import Modal from './model';
+import Modal from './modal';
 import {data} from "../data"
+//import reducer
+import { reducer } from './Reducer';
+
+
+const defaultState = {
+    people:data,
+    isModalOpen: false,
+    modalContent:""
+}
+
 
 function Index() {
     const [name, setName] = useState("")   //use state to take name input  
-    const [people, setPeople] = useState(data)   //we have created a program where we are taking values from user and displayed the same
-    const [showModal, setShowModal] = useState(false);
+    const [state, dispatch] = useReducer(reducer, defaultState)
+    //const [people, setPeople] = useState(data)   //we have created a program where we are taking values from user and displayed the same
+    //const [showModal, setShowModal] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(name){
-            setShowModal(true);
-            setPeople([...people,{id:new Date().getTime().toString(), name}]);
-            setName('')
+            const newItem = {id: new Date().getTime().toString(), name};
+
+            dispatch({type:"ADD_ITEM", payload:newItem});
+            setName("");
         }
         else{
-            setShowModal(true)
+            dispatch({type: "NO_VALUE"});
         }
+        
+    }
+    const closeModal =() =>{
+        dispatch({type:'CLOSE_MODAL'})
     }
 
     return (
         <>
-        {showModal && <Modal /> }
+        {state.isModalOpen && (<Modal closeModal={closeModal} modalContent={state.modalContent}/> )}
         <form onSubmit={handleSubmit} className="form">
             <div>
                 <input type='text' value={name} onChange={(e) => setName(e.target.value)}/>
@@ -29,10 +45,13 @@ function Index() {
             </div>
             <button type='submit'>Add Users</button>
         </form>
-        {people.map((person) =>{
+        {state.people.map((person) =>{
             return<>
-                <div key={person.id}>
+                <div key={person.id} className="item">
                     <h4>{person.name}</h4>
+                    <button onClick={()=> dispatch({type:"REMOVE_ITEM", payload: person.id})}>
+                        REMOVE
+                    </button>
                 </div>
             </>
         })}
