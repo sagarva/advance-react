@@ -15,6 +15,18 @@
     {
       "name": "Batman",
       "id": 4
+    },
+    {
+      "name": "Superman",
+      "id": 5
+    },
+    {
+      "name": "Superman",
+      "id": 6
+    },
+    {
+      "name": "Iron Man",
+      "id": 7
     }
   ]
 }
