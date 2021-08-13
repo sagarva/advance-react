@@ -1,5 +1,5 @@
 import React from "react";
-import Index from "./tutorial/Reducer";
+import ReactRouterDom from "./tutorial/React-Router/index";
 //import Forms from "./tutorial/Forms";
 //import LearnJSON from "./tutorial/LearnJSON";
 //import LearnJSON from "./tutorial/LearnJSON";
@@ -7,7 +7,7 @@ import Index from "./tutorial/Reducer";
 
 function App() {
   return ( <div className="container">
-    <Index />
+    <ReactRouterDom />
 
     </div>
   );
