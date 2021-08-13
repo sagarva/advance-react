@@ -8,11 +8,12 @@ import Person from './Person';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom"; //we want to use our router in our web page
 //so that we would require a router which can route our components to there respective links and we would also require some kind of switch to enable or disable our router
 
+//we can use either very unique path routes or we can use exact keywords
 
 function ReactRouterDom() {
     return (
         <Router>
-            <Route path='/'>
+            <Route exact path='/'>
                 <Home />
             </Route>
             <Route path='/about'>
