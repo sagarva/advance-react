@@ -13,24 +13,25 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom"; //we wa
 function ReactRouterDom() {
     return (
         <Router>
+            <NavBar />
+           
+            <Switch>
             <Route exact path='/'>
                 <Home />
             </Route>
             <Route path='/about'>
                 <About />
             </Route>
-            <Route path='/error'>
-                <Error />
-            </Route>
             <Route path='/people'>
                 <People />
             </Route>
-            <Route path='/navbar'>
-                <NavBar />
+            <Route path='/person/:id' children={<Person />}>
+                
             </Route>
-            <Route path='/person'>
-                <Person />
+            <Route path='/*'>  {/*means all the pages so no matter what router i select this page is going to be display*/}
+                <Error />
             </Route>
+            </Switch>
         </Router>
     )
 }
