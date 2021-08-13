@@ -4,10 +4,10 @@ import { Link, useParams } from 'react-router-dom';
 
 function Person() {
     console.log(useParams());    //useParams() is raect-router-dom hook
-    const [name, setName] = useState("Default");
+    const [name,setName] = useState("Default");
     const {id} = useParams();
     useEffect(() => {
-        const newPerson =data.find((person) => person.id == parseInt(id));
+        const newPerson =data.find((person) => person.id === parseInt(id));
         setName(newPerson.name)
     }, [])
     return (
